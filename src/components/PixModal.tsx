@@ -1,9 +1,8 @@
 "use client";
 
-import { useEffect } from "react";
-import { QRCodeSVG } from "qrcode.react";
+import { useEffect, useState } from "react";
+import { PixSVG, payload } from "react-qrcode-pix";
 import { X, Heart } from "lucide-react";
-import { generatePixPayload } from "@/lib/pix";
 import { PIX_KEY, MERCHANT_NAME, MERCHANT_CITY } from "@/lib/constants";
 import CopyButton from "./CopyButton";
 
@@ -20,13 +19,19 @@ export default function PixModal({
   txId,
   onClose,
 }: PixModalProps) {
-  const pixCode = generatePixPayload(
-    PIX_KEY,
-    MERCHANT_NAME,
-    MERCHANT_CITY,
+  const [pixCode, setPixCode] = useState("");
+
+  const pixProps = {
+    pixkey: PIX_KEY,
+    merchant: MERCHANT_NAME,
+    city: MERCHANT_CITY,
+    code: txId,
     amount,
-    txId
-  );
+  };
+
+  useEffect(() => {
+    setPixCode(payload(pixProps));
+  }, [amount, txId]);
 
   useEffect(() => {
     function handleEsc(e: KeyboardEvent) {
@@ -74,13 +79,8 @@ export default function PixModal({
             para quem precisa
           </p>
 
-          <div className="bg-stone-50 rounded-xl p-6 mb-4">
-            <QRCodeSVG
-              value={pixCode}
-              size={200}
-              className="mx-auto"
-              bgColor="transparent"
-            />
+          <div className="bg-stone-50 rounded-xl p-6 mb-4 flex justify-center">
+            <PixSVG {...pixProps} />
           </div>
 
           <p className="text-xs text-stone-400 mb-3">
