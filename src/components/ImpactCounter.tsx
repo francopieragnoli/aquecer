@@ -1,7 +1,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Users, Shirt } from "lucide-react";
+import { Users } from "lucide-react";
+import BlanketIcon from "./BlanketIcon";
 import { TOTAL_DONORS, CAMPAIGN_DONATED } from "@/lib/constants";
 
 function useAnimatedNumber(target: number, duration = 2000) {
@@ -42,7 +43,7 @@ export default function ImpactCounter() {
         </div>
         <div className="text-center">
           <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-amber-100 text-amber-600 mb-3">
-            <Shirt className="w-6 h-6" />
+            <BlanketIcon className="w-6 h-6" />
           </div>
           <p className="text-4xl md:text-5xl font-extrabold text-stone-800">
             {blankets}

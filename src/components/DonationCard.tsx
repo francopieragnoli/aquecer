@@ -1,6 +1,6 @@
 "use client";
 
-import { Shirt } from "lucide-react";
+import BlanketIcon from "./BlanketIcon";
 
 interface DonationCardProps {
   amount: number;
@@ -42,7 +42,7 @@ export default function DonationCard({
         }`}
       >
         {Array.from({ length: blankets }).map((_, i) => (
-          <Shirt key={i} className="w-5 h-5" />
+          <BlanketIcon key={i} className="w-5 h-5" />
         ))}
       </div>
 
