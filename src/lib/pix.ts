@@ -32,6 +32,7 @@ export function generatePixPayload(
 
   let payload =
     tlv("00", "01") +
+    tlv("01", "12") +
     tlv("26", merchantAccountInfo) +
     tlv("52", "0000") +
     tlv("53", "986") +
