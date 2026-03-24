@@ -1,9 +1,19 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import { Heart } from "lucide-react";
+import { HERO_IMAGES } from "@/lib/constants";
 
 export default function Hero() {
+  const [heroImage, setHeroImage] = useState(HERO_IMAGES[0]);
+
+  useEffect(() => {
+    setHeroImage(
+      HERO_IMAGES[Math.floor(Math.random() * HERO_IMAGES.length)]
+    );
+  }, []);
+
   function scrollToDonate() {
     document.getElementById("doar")?.scrollIntoView({ behavior: "smooth" });
   }
@@ -15,7 +25,7 @@ export default function Hero() {
 
       {/* Imagem de fundo */}
       <Image
-        src="/images/rua.jpg"
+        src={heroImage}
         alt="Pessoa em situação de rua no frio"
         fill
         className="object-cover object-center opacity-50"

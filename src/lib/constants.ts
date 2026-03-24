@@ -18,3 +18,5 @@ export const CAMPAIGN_END_DATE = "2026-06-30T23:59:59-03:00";
 export const CAMPAIGN_GOAL = 1000;
 export const CAMPAIGN_DONATED = 400;
 export const TOTAL_DONORS = 150;
+
+export const HERO_IMAGES = ["/images/rua.jpg", "/images/rua-mulher.jpg"];
