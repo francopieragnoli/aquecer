@@ -3,7 +3,7 @@
 import { useState } from "react";
 import DonationCard from "./DonationCard";
 import PixModal from "./PixModal";
-import { DONATION_TIERS } from "@/lib/constants";
+import { DONATION_TIERS, PIX_CODE } from "@/lib/constants";
 
 export default function DonationTiers() {
   const [selectedIndex, setSelectedIndex] = useState(1); // Default: R$50
@@ -45,7 +45,7 @@ export default function DonationTiers() {
         <PixModal
           amount={selected.amount}
           blankets={selected.blankets}
-          txId={selected.txId}
+          txId={PIX_CODE}
           onClose={() => setShowModal(false)}
         />
       )}
